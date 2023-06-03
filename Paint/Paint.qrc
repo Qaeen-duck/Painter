@@ -1,4 +1,17 @@
 <RCC>
-    <qresource prefix="Paint">
+    <qresource prefix="/Paint">
+        <file>polyline.png</file>
+        <file>rectangle.png</file>
+        <file>polygon.png</file>
+        <file>circle.png</file>
+        <file>shan.png</file>
+        <file>txt.png</file>
+        <file>picture.png</file>
+        <file>rubber.png</file>
+        <file>clear.png</file>
+        <file>big.png</file>
+        <file>small.png</file>
+        <file>color.png</file>
+        <file>style.png</file>
     </qresource>
 </RCC>

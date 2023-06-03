@@ -34,6 +34,12 @@
     <ClCompile Include="LayerManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GraphicsView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Paint_rc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Paint.h">
@@ -46,13 +52,16 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="Paint.qrc">
-      <Filter>Resource Files</Filter>
-    </QtRcc>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="LayerManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GraphicsView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Paint.qrc">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
   </ItemGroup>
 </Project>

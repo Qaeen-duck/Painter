@@ -2,6 +2,9 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_Paint.h"
+#include <QtWidgets/QToolBar>
+#include <QtWidgets/QAction>
+#include <qicon.h>
 
 class Paint : public QMainWindow
 {

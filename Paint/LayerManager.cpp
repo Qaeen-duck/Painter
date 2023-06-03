@@ -2,10 +2,22 @@
 
 LayerManager::LayerManager(QWidget* parent):QWidget(parent)
 {
+	//页面布局
 	QVBoxLayout *layout = new QVBoxLayout(this);
+	layout->parentWidget()->setFixedSize(1300, 700);
 	listWidget = new QListWidget(this);
 	listWidget->setFixedSize(200, 500);
+	//listWidget->setFrameStyle(QFrame::Plain | QFrame::StyledPanel);
 	layout->addWidget(listWidget);
+	QWidget *hwidget = new QWidget();
+	hwidget->setLayout(layout);
+	QHBoxLayout *layoutView = new QHBoxLayout(this);
+	layoutView->addWidget(hwidget);
+	view = new QGraphicsView(this);
+	view->setFixedSize(1000, 700);
+	layoutView->addWidget(view);
+
+
 
 	addButton = new QPushButton("Add Layer", this);
 	connect(addButton, &QPushButton::clicked, this, &LayerManager::addLayer);
@@ -15,9 +27,9 @@ LayerManager::LayerManager(QWidget* parent):QWidget(parent)
 	connect(removeButton, &QPushButton::clicked, this, &LayerManager::removeLayer);
 	layout->addWidget(removeButton);
 
-	activateButton = new QPushButton("Activate Layer", this);
-	connect(activateButton, &QPushButton::clicked, this, &LayerManager::activateLayer);
-	layout->addWidget(activateButton);
+	//activateButton = new QPushButton("Activate Layer", this);
+	//connect(activateButton, &QPushButton::clicked, this, &LayerManager::activateLayer);
+	//layout->addWidget(activateButton);
 }
 
 void LayerManager::addLayer()
@@ -28,7 +40,13 @@ void LayerManager::addLayer()
 	{
 		Layer* layer = new Layer(layerName);
 		layers.append(layer);
-		listWidget->addItem(layer->getName());
+		QListWidgetItem *item = new QListWidgetItem(listWidget);
+		QCheckBox *checkbox = new QCheckBox();  //给图层列表中每个图层前面添加复选框
+		checkbox->setText(layer->getName());
+		listWidget->addItem(item);
+		listWidget->setItemWidget(item, checkbox);
+		layer->getScene()->addRect(0, 0, 100, 100);
+		view->setScene(layer->getScene());
 	}
 }
 
@@ -44,22 +62,22 @@ void LayerManager::removeLayer()
 	}
 }
 
-void LayerManager::activateLayer()
-{
-	int selectedIndex = listWidget->currentRow();
-	if (selectedIndex >= 0) 
-	{
-		for (Layer* layer : layers) 
-		{
-			layer->setActive(false);
-		}
-
-		Layer* activeLayer = layers.at(selectedIndex);
-		activeLayer->setActive(true);
-
-		// Update UI or perform other actions for the activated layer
-	}
-}
+//void LayerManager::activateLayer()
+//{
+//	int selectedIndex = listWidget->currentRow();
+//	if (selectedIndex >= 0) 
+//	{
+//		for (Layer* layer : layers) 
+//		{
+//			layer->setActive(false);
+//		}
+//
+//		Layer* activeLayer = layers.at(selectedIndex);
+//		activeLayer->setActive(true);
+//
+//		// Update UI or perform other actions for the activated layer
+//	}
+//}
 
 QList<Layer*> LayerManager::getAllLayer()
 {
