@@ -13,8 +13,9 @@ LayerManager::LayerManager(QWidget* parent):QWidget(parent)
 	hwidget->setLayout(layout);
 	QHBoxLayout *layoutView = new QHBoxLayout(this);
 	layoutView->addWidget(hwidget);
-	view = new QGraphicsView(this);
-	view->setFixedSize(1000, 700);
+	view = new GraphicsView();
+	view->setFixedSize(1000, 700);  //固定视图大小
+	view->setDragMode(QGraphicsView::ScrollHandDrag);  //设置拖拽模式
 	layoutView->addWidget(view);
 
 
@@ -45,7 +46,10 @@ void LayerManager::addLayer()
 		checkbox->setText(layer->getName());
 		listWidget->addItem(item);
 		listWidget->setItemWidget(item, checkbox);
-		layer->getScene()->addRect(0, 0, 100, 100);
+
+		layer->getScene()->setSceneRect(0, 0, 2000, 2000);
+		view->centerOn(1000, 1000);
+		layer->getScene()->addRect(500, 500, 100, 100);
 		view->setScene(layer->getScene());
 	}
 }

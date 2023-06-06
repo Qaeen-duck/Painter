@@ -1,3 +1,5 @@
-﻿  Paint_rc.cpp
+﻿  GraphicsView.cpp
+  LayerManager.cpp
+  main.cpp
   Paint.vcxproj -> D:\C++\Paint\x64\Debug\Paint.exe
   Paint.vcxproj -> D:\C++\Paint\x64\Debug\Paint.pdb (Full PDB)

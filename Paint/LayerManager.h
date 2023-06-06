@@ -8,7 +8,7 @@
 #include <QtWidgets/QInputDialog>
 #include <QtWidgets/QCheckBox>
 #include <qgraphicsscene.h>
-#include <qgraphicsview.h>
+#include "GraphicsView.h"
 #include <QtWidgets/QFrame>
 #include <qframe.h>
 #include <qpen.h>
@@ -61,6 +61,7 @@ private:
 	QPushButton* removeButton;
 	//QPushButton* activateButton;
 	QList<Layer*> layers;
-	QGraphicsView* view;
+	//QGraphicsView* view;
+	GraphicsView *view;
 };
 

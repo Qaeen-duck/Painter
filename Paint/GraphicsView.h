@@ -1,17 +1,25 @@
 #pragma once
 #include "qgraphicsview.h"
+#include <qwheelevent>
+#include <qmouseevent>
+#include <qpoint.h>
+
 class GraphicsView :
 	public QGraphicsView
 {
 public:
 	GraphicsView();
 	~GraphicsView();
+
 protected:
 	void wheelEvent(QWheelEvent *) override;
-public slots:
-void ZoomIn(int level = 1);
-void ZoomOut(int level = 1);
-
+	void mousePressEvent(QMouseEvent *) override;
+	void mouseMoveEvent(QMouseEvent *) override;
+	void mouseReleaseEvent(QMouseEvent *) override;
+private:
+	QPointF centerAnchor;
+	QPoint posAnchor;
+	bool isMousePressed;
 };
 
 //class View: public QFrame
